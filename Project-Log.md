@@ -3,7 +3,7 @@
 - 주제 : 리액트 라우터를 이용해 뉴스앱 만들어보기
 - React, React-Router, Redux, React-Redux, Redux-Thunk, Axios, newsapi(https://newsapi.org/) 사용
 
-## 2018 / 01 / 29
+## 2018 / 02 / 20
 
 ### App Overview
 
