@@ -22,10 +22,6 @@ class HandleJP extends React.Component {
       );
     }
 
-    if (!this.props.isSignedIn) {
-      history.push("/");
-    }
-
     return this.props.news.articles.map((nw, index) => (
       <div className="newsTitleList" key={nw.title}>
         <h2 className="ui header">
@@ -58,7 +54,6 @@ class HandleJP extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isSignedIn: state.auth.isSignedIn,
     news: state.news.newsList
   };
 };

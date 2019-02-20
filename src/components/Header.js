@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./index.css";
 import { Link } from "react-router-dom";
-import GoogleOAuth from "./HandleNews/GoogleOAuth";
 
 const Header = () => {
   return (
@@ -9,7 +8,6 @@ const Header = () => {
       <Link to="/" className="ui button primary">
         Main
       </Link>
-      <GoogleOAuth />
     </div>
   );
 };

@@ -50,9 +50,7 @@ class HandleNewsDetail extends React.Component {
     const { newsDetail } = this.props;
     if (!newsDetail) {
     }
-    if (!this.props.isSignedIn) {
-      history.push("/");
-    }
+
     if (newsDetail) {
       return newsDetail.articles.map(nw =>
         nw.title === this.props.match.params.id ? (
@@ -75,7 +73,6 @@ class HandleNewsDetail extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isSignedIn: state.auth.isSignedIn,
     newsDetail: state.news.newsList
   };
 };
