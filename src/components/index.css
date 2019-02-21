@@ -68,9 +68,20 @@ form {
 
 input {
   height: 2.5rem;
-  width: 12rem;
+  width: 15rem;
+  font-size: 1.5rem;
 }
 
+/* 검색 페이지 */
 .searchResult {
   text-align: left;
+}
+.searchButton {
+  font-size: 20px;
+  height: 2.5rem;
+  width: 6rem;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 0;
 }

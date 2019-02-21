@@ -31,7 +31,7 @@ class HandleSearchedNews extends React.Component {
               placeholder="ex. apple"
             />
           </div>
-          <button className="ui button searchButton">Search</button>
+          <button className="searchButton">Search</button>
         </form>
         <div className="searchResult">
           {!searchResult
