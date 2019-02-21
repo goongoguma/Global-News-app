@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "../index.css";
 import { connect } from "react-redux";
-import { countryNews } from "../../actions/index";
+import { countryNews, searchedNews } from "../../actions/index";
 import history from "../../history";
 
 class HandleNewsDetail extends React.Component {
   componentDidMount() {
-    this.props.countryNews(this.props.location.state.countryCode);
+    const { countryCode, keyword } = this.props.location.state;
+    const { countryNews, searchedNews } = this.props;
+
+    countryCode ? countryNews(countryCode) : searchedNews(keyword);
   }
 
   newPageOpen(nw) {
@@ -43,11 +46,14 @@ class HandleNewsDetail extends React.Component {
   };
 
   BackTotheList = () => {
-    history.push(`/news/${this.props.location.state.countryCode}`);
+    this.props.newsDetail
+      ? history.push(`/news/${this.props.location.state.countryCode}`)
+      : history.push(`/`);
   };
 
   HandleContent = () => {
-    const { newsDetail } = this.props;
+    const { newsDetail, searchResult } = this.props;
+
     if (!newsDetail) {
     }
 
@@ -60,9 +66,20 @@ class HandleNewsDetail extends React.Component {
         ) : null
       );
     }
+
+    if (searchResult) {
+      return searchResult.articles.map(nw =>
+        nw.title === this.props.match.params.id ? (
+          <div key={nw.title}>
+            <div>{this.HandleFormat(nw)} </div>
+          </div>
+        ) : null
+      );
+    }
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div>{this.HandleContent()}</div>
@@ -73,11 +90,12 @@ class HandleNewsDetail extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    newsDetail: state.news.newsList
+    newsDetail: state.news.newsList,
+    searchResult: state.searchedNews.newsList
   };
 };
 
 export default connect(
   mapStateToProps,
-  { countryNews }
+  { countryNews, searchedNews }
 )(HandleNewsDetail);
