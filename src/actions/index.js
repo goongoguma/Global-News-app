@@ -1,6 +1,19 @@
 import api from "../api/api";
 import axios from "axios";
 
+export const signIn = userId => {
+  return {
+    type: "SIGN_IN",
+    payload: userId
+  };
+};
+
+export const signOut = () => {
+  return {
+    type: "SIGN_OUT"
+  };
+};
+
 export const countryNews = country => {
   return async dispatch => {
     const res = await api.get(

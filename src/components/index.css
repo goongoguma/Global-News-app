@@ -23,6 +23,15 @@
   font-size: 4rem;
 }
 
+.signIn {
+  position: absolute;
+  font-size: 4rem;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
 .sectionTitle {
   padding: 2rem 2rem 0 2rem;
 }

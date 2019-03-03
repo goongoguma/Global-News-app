@@ -3,6 +3,7 @@ import styles from "../index.css";
 import { connect } from "react-redux";
 import { countryNews } from "../../actions/index";
 import { Link } from "react-router-dom";
+import history from "../../history";
 
 class HandleKR extends React.Component {
   state = { countryCode: "kr" };
@@ -19,6 +20,10 @@ class HandleKR extends React.Component {
           </div>
         </div>
       );
+    }
+
+    if (!this.props.isSignedIn) {
+      history.push("/");
     }
 
     return this.props.news.articles.map((nw, index) => (
@@ -53,7 +58,8 @@ class HandleKR extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    news: state.news.newsList
+    news: state.news.newsList,
+    isSignedIn: state.auth.isSignedIn
   };
 };
 

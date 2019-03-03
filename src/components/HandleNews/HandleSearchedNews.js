@@ -3,6 +3,7 @@ import styles from "../index.css";
 import { connect } from "react-redux";
 import { searchedNews } from "../../actions";
 import { Link } from "react-router-dom";
+import history from "../../history";
 
 class HandleSearchedNews extends React.Component {
   state = {
@@ -14,11 +15,8 @@ class HandleSearchedNews extends React.Component {
     this.props.searchedNews(this.state.term);
   };
 
-  newsSearchResult = () => {
-    return <div>hello</div>;
-  };
-
-  render() {
+  HandleContent = () => {
+    console.log(this.props.isSignedIn);
     const { searchResult } = this.props;
     return (
       <div className="HandleSearch">
@@ -34,34 +32,41 @@ class HandleSearchedNews extends React.Component {
           <button className="searchButton">Search</button>
         </form>
         <div className="searchResult">
-          {!searchResult
-            ? null
-            : searchResult.articles.map((nw, index) => (
-                <div className="newsTitleList" key={nw.title}>
-                  <h2 className="ui header">
-                    <span className="newsListOrder">
-                      {`${index + 1}.`} <span> </span>
-                    </span>
-                    <Link
-                      to={{
-                        pathname: `/news/${nw.title}`,
-                        state: { keyword: this.state.term }
-                      }}
-                      className="header newsList"
-                    >
-                      {nw.title}
-                    </Link>
-                  </h2>
-                </div>
-              ))}
+          {!searchResult ? (
+            <div>Loading...</div>
+          ) : (
+            searchResult.articles.map((nw, index) => (
+              <div className="newsTitleList" key={index}>
+                <h2 className="ui header">
+                  <span className="newsListOrder">
+                    {`${index + 1}.`} <span> </span>
+                  </span>
+                  <Link
+                    to={{
+                      pathname: `/news/${nw.title}`,
+                      state: { keyword: this.state.term }
+                    }}
+                    className="header newsList"
+                  >
+                    {nw.title}
+                  </Link>
+                </h2>
+              </div>
+            ))
+          )}
         </div>
       </div>
     );
+  };
+
+  render() {
+    return <div>{this.HandleContent()}</div>;
   }
 }
 
 const mapStateToProps = state => {
   return {
+    isSignedIn: state.auth.isSignedIn,
     searchResult: state.searchedNews.newsList
   };
 };
