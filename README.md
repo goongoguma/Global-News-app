@@ -1,3 +1,3 @@
-## Global News App with React, React-Router, Redux, React-Redux, Redux-Thunk, Axios, newsapi(https://newsapi.org/)
+## Global News App with React, React-Router, Redux, React-Redux, Redux-Thunk, Axios, Google OAuth, newsapi(https://newsapi.org/)
 
-https://myglobalnewsapp.netlify.com/
+https://www.youtube.com/watch?v=S41xskP0me8
