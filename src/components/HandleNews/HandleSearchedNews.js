@@ -16,7 +16,6 @@ class HandleSearchedNews extends React.Component {
   };
 
   HandleContent = () => {
-    console.log(this.props.isSignedIn);
     const { searchResult } = this.props;
     return (
       <div className="HandleSearch">
@@ -33,7 +32,7 @@ class HandleSearchedNews extends React.Component {
         </form>
         <div className="searchResult">
           {!searchResult ? (
-            <div>Loading...</div>
+            <div>Loading</div>
           ) : (
             searchResult.articles.map((nw, index) => (
               <div className="newsTitleList" key={index}>

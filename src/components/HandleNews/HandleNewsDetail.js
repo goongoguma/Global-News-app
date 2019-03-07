@@ -5,13 +5,6 @@ import { countryNews, searchedNews } from "../../actions/index";
 import history from "../../history";
 
 class HandleNewsDetail extends React.Component {
-  componentDidMount() {
-    const { countryCode, keyword } = this.props.location.state;
-    const { countryNews, searchedNews } = this.props;
-
-    countryCode ? countryNews(countryCode) : searchedNews(keyword);
-  }
-
   newPageOpen(nw) {
     return window.open(`${nw.url}`);
   }
@@ -53,9 +46,6 @@ class HandleNewsDetail extends React.Component {
 
   HandleContent = () => {
     const { newsDetail, searchResult } = this.props;
-
-    if (!newsDetail) {
-    }
 
     if (newsDetail) {
       return newsDetail.articles.map(nw =>
